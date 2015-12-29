@@ -19,7 +19,8 @@ public class TextSelectorHandler {
 	}
 	
 	public String determineTextValue(Elements elements, String selector, String regex){
-		return StringEscapeUtils.escapeHtml4(StringUtils.trim(filterByRegex(determineTextValue(elements, selector), regex)));
+		String value = StringUtils.trim(filterByRegex(determineTextValue(elements, selector), regex));
+		return StringEscapeUtils.escapeHtml4(value);
 	}
 
 	private String determineTextValue(Elements elements, String selector) {
