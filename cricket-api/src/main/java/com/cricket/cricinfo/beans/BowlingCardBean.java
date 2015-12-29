@@ -1,37 +1,38 @@
 package com.cricket.cricinfo.beans;
 
+import com.cricket.annotations.TableTextSelector;
 import com.cricket.annotations.TextSelector;
 
 public class BowlingCardBean {
 
-	@TextSelector(selector="td:eq(1)")
+	@TableTextSelector(selector="td" , heading=".th-innings-heading")
 	private String playerName;
 	
-	@TextSelector(selector="td:eq(2)")
+	@TableTextSelector(selector="td" , heading=".th-o")
 	private String overs;
 	
-	@TextSelector(selector="td:eq(3)")
+	@TableTextSelector(selector="td" , heading=".th-m")
 	private String maidens;
 	
-	@TextSelector(selector="td:eq(4)")
+	@TableTextSelector(selector="td" , heading=".th-r")
 	private String runs;
 	
-	@TextSelector(selector="td:eq(5)")
+	@TableTextSelector(selector="td" , heading=".th-w[title~=wickets]")
 	private String  wickets;
 	
-	@TextSelector(selector="td:eq(6)")
+	@TableTextSelector(selector="td" , heading=".th-econ")
 	private String economy;
 	
-	@TextSelector(selector="td:eq(7)")
+	@TableTextSelector(selector="td" , heading=".th-w[title~=dot]")
 	private String dots;
 	
-	@TextSelector(selector="td:eq(8)")
+	@TableTextSelector(selector="td" , heading=".th-w[title~=fours]")
 	private String fours;
 	
-	@TextSelector(selector="td:eq(9)")
+	@TableTextSelector(selector="td" , heading=".th-w[title~=sixes]")
 	private String sixes;
 	
-	@TextSelector(selector="td:eq(10)")
+	@TextSelector(selector="td.td-extra")
 	private String extras;
 
 	public String getPlayerName() {

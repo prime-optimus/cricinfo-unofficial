@@ -9,13 +9,13 @@ public class MatchInningsBean {
 	@IteratedSelector(selector="tbody:has(.th-sr) tr:not([class])")
 	private List<BattingCardBean> batting;
 	
-	@IteratedSelector(selector=".fowLink span", scope="local")
+	@IteratedSelector(selector=".fowLink span")
 	private List<FallOfWicketsBean> fow;
 	
 	@IteratedSelector(selector="tbody:has(.th-econ) tr:not([class])")
 	private List<BowlingCardBean> bowling;
 	
-	@IteratedSelector(selector=".to-bat .bold", scope="local")
+	@IteratedSelector(selector=".to-bat .bold")
 	private List<DidNotBatBean> dnb;
 
 	public List<BattingCardBean> getBatting() {

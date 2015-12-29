@@ -9,9 +9,11 @@ import org.jsoup.select.Elements;
 
 import com.cricket.annotations.IteratedSelector;
 import com.cricket.annotations.SimpleChildSelector;
+import com.cricket.annotations.TableTextSelector;
 import com.cricket.annotations.TextSelector;
 import com.cricket.annotations.handlers.IteratedSelectorHandler;
 import com.cricket.annotations.handlers.SimpleChildSelectorHandler;
+import com.cricket.annotations.handlers.TableTextSelectorHandler;
 import com.cricket.annotations.handlers.TextSelectorHandler;
 
 public class ElementParserFactory {
@@ -33,6 +35,9 @@ public class ElementParserFactory {
 					setBeanValue(instance, field, handler.processAnnotation(elements, field));
 				} else if(isAnnotationType(annotations, SimpleChildSelector.class)){
 					SimpleChildSelectorHandler handler = new SimpleChildSelectorHandler();
+					setBeanValue(instance, field, handler.processAnnotation(elements, field));
+				}  else if(isAnnotationType(annotations, TableTextSelector.class)){
+					TableTextSelectorHandler handler = new TableTextSelectorHandler();
 					setBeanValue(instance, field, handler.processAnnotation(elements, field));
 				}
 			}

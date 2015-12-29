@@ -6,22 +6,22 @@ import com.cricket.annotations.TextSelector;
 @SimpleSelector
 public class MatchSummaryBean {
 
-	@TextSelector(selector=".innings-information .space-top-bottom-5:eq(0)")
+	@TextSelector(selector=".space-top-bottom-5:has(a[href*=series]):first-child")
 	private String tournament;
 	
-	@TextSelector(selector=".innings-information .team-1-name .teamLink:eq(0)")
+	@TextSelector(selector=".team-1-name .teamLink:eq(0), .team-1-name", regex="[a-zA-z ]+(?= v)|[a-zA-z ]+")
 	private String team1;
 	
-	@TextSelector(selector=".innings-information .team-1-name .teamLink:eq(1)")
+	@TextSelector(selector=".team-1-name .teamLink:eq(1), .team-2-name", regex="[a-zA-z ]+(?= v)|[a-zA-z ]+")
 	private String team2;
 	
 	@TextSelector(selector=".innings-information .innings-requirement")
 	private String matchStatus;
 	
-	@TextSelector(selector=".match-information .space-top-bottom-5:eq(1)")
+	@TextSelector(selector=".space-top-bottom-5 a[href*=ground]")
 	private String ground;
 	
-	@TextSelector(selector=".match-information .space-top-bottom-5:eq(2)")
+	@TextSelector(selector=".space-top-bottom-5:last-child")
 	private String info;
 
 	public String getTournament() {

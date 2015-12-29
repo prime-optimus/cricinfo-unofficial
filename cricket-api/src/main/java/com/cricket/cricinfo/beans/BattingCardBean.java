@@ -1,5 +1,6 @@
 package com.cricket.cricinfo.beans;
 
+import com.cricket.annotations.TableTextSelector;
 import com.cricket.annotations.TextSelector;
 
 public class BattingCardBean {
@@ -13,19 +14,19 @@ public class BattingCardBean {
 	@TextSelector(selector="td:eq(3)")
 	private String runs;
 	
-	@TextSelector(selector="td:eq(4)")
+	@TableTextSelector(selector="td" , heading=".th-m", adjustment=1)
 	private String minutes;
 	
-	@TextSelector(selector="td:eq(5)")
+	@TextSelector(selector="td:nth-last-child(4)")
 	private String balls;
 	
-	@TextSelector(selector="td:eq(6)")
+	@TextSelector(selector="td:nth-last-child(3)")
 	private String fours;
 	
-	@TextSelector(selector="td:eq(7)")
+	@TextSelector(selector="td:nth-last-child(2)")
 	private String sixes;
 	
-	@TextSelector(selector="td:eq(8)")
+	@TextSelector(selector="td:nth-last-child(1)")
 	private String strikeRate;
 
 	public String getPlayerName() {

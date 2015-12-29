@@ -15,33 +15,39 @@ public class TextSelectorHandler {
 	
 	public String processAnnotation(Elements elements, Field field){
 		TextSelector textSelector = field.getAnnotation(TextSelector.class);
-		String returnValue = determineTextValue(elements, textSelector);
-		return filterByRegex(textSelector, returnValue);
-	}
-
-	private String determineTextValue(Elements elements, TextSelector textSelector) {
-		String returnValue = StringUtils.EMPTY;
-		
-		Elements tempElements = elements;
-		if(StringUtils.isNotEmpty(textSelector.selector())){
-			tempElements = elements.select(textSelector.selector());
-		}
-
-		if(CollectionUtils.isNotEmpty(tempElements)){
-			returnValue = tempElements.get(0).text();
-		}
-		return StringEscapeUtils.escapeHtml4(returnValue);
+		return determineTextValue(elements, textSelector.selector(), textSelector.regex());
 	}
 	
-	private String filterByRegex(TextSelector textSelector, String returnValue) {
+	public String determineTextValue(Elements elements, String selector, String regex){
+		return StringEscapeUtils.escapeHtml4(StringUtils.trim(filterByRegex(determineTextValue(elements, selector), regex)));
+	}
+
+	private String determineTextValue(Elements elements, String selector) {
+		String returnValue = null;
+		
+		Elements tempElements = elements;
+		if(StringUtils.isNotEmpty(selector)){
+			tempElements = elements.select(selector);
+		}
+
+		if(CollectionUtils.isNotEmpty(tempElements) && StringUtils.isNotBlank(tempElements.first().text())){
+			returnValue = tempElements.first().text();
+		}
+		return returnValue;
+	}
+	
+	private String filterByRegex(String returnValue, String regex) {
 		String regexResult = returnValue;
 		
-		if(StringUtils.isNotBlank(textSelector.regex())){
-			Pattern pattern = Pattern.compile(textSelector.regex());
+		if(StringUtils.isNotBlank(regex)){
+			
+			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(returnValue);
 			
 			if(matcher.find()){
 				regexResult = matcher.group();
+			} else {
+				regexResult = null;
 			}
 		}
 		return regexResult;

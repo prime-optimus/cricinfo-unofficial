@@ -49,5 +49,21 @@ public class MatchBean {
 	public void setInnings2(MatchInningsBean innings2) {
 		this.innings2 = innings2;
 	}
+
+	public MatchInningsBean getInnings3() {
+		return innings3;
+	}
+
+	public void setInnings3(MatchInningsBean innings3) {
+		this.innings3 = innings3;
+	}
+
+	public MatchInningsBean getInnings4() {
+		return innings4;
+	}
+
+	public void setInnings4(MatchInningsBean innings4) {
+		this.innings4 = innings4;
+	}
 	
 }

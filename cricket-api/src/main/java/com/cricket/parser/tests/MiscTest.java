@@ -9,10 +9,10 @@ public class MiscTest {
 	List<String> list;
 	
 	public static void main(String args[]){
-		String regex = "\\d+-\\d+";
+		String regex = "\\d+\\.\\d+";
 				
 		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher("5-150 (Anderson, 35.3 ov)");
+		Matcher matcher = pattern.matcher("3-158 (Shoaib Mohammad)");
 		
 		if(matcher.find()){
 			System.out.println(matcher.group());

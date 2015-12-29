@@ -7,7 +7,7 @@ public class FallOfWicketsBean {
 	@TextSelector(regex="\\d+-\\d+")
 	private String score;
 	
-	@TextSelector(regex="(?<=\\()\\w+")
+	@TextSelector(regex="(?<=\\()[\\w ]+")
 	private String player;
 	
 	@TextSelector(regex="\\d+\\.\\d+")
