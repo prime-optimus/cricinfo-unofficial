@@ -1,9 +1,13 @@
 package com.cricket.cricinfo.beans;
 
+import com.cricket.annotations.SimpleChildSelector;
 import com.cricket.annotations.TableTextSelector;
 import com.cricket.annotations.TextSelector;
 
 public class BattingCardBean {
+	
+	@SimpleChildSelector(selector="tbody:has(.th-sr)")
+	private InningsSummaryBean summary;
 	
 	@TextSelector(selector="td:eq(1)")
 	private String playerName;

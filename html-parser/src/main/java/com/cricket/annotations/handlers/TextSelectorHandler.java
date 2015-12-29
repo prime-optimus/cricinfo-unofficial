@@ -39,7 +39,7 @@ public class TextSelectorHandler {
 	private String filterByRegex(String returnValue, String regex) {
 		String regexResult = returnValue;
 		
-		if(StringUtils.isNotBlank(regex)){
+		if(StringUtils.isNotBlank(regex) && StringUtils.isNotBlank(returnValue)){
 			
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(returnValue);

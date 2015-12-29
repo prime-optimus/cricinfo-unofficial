@@ -3,6 +3,7 @@ package com.cricket.cricinfo.beans;
 import java.util.List;
 
 import com.cricket.annotations.IteratedSelector;
+import com.cricket.annotations.SimpleChildSelector;
 
 public class MatchInningsBean {
 	
@@ -17,7 +18,10 @@ public class MatchInningsBean {
 	
 	@IteratedSelector(selector=".to-bat .bold")
 	private List<DidNotBatBean> dnb;
-
+	
+	@SimpleChildSelector(selector="tbody:has(.th-sr)")
+	private InningsSummaryBean summary;
+	
 	public List<BattingCardBean> getBatting() {
 		return batting;
 	}
@@ -48,5 +52,13 @@ public class MatchInningsBean {
 
 	public void setDnb(List<DidNotBatBean> dnb) {
 		this.dnb = dnb;
+	}
+
+	public InningsSummaryBean getSummary() {
+		return summary;
+	}
+
+	public void setSummary(InningsSummaryBean summary) {
+		this.summary = summary;
 	}
 }

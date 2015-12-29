@@ -20,7 +20,6 @@ import com.cricket.parser.factory.ElementParserFactory;
 public class CricinfoMatchResource {
 	private static final String CRICINFO_MATCH_URL = "http://www.espncricinfo.com/ci/engine/match/%s.html?view=scorecard;wrappertype=none";
 	
-	
 	@GET
 	@Path("{matchId}")
 	@Produces(MediaType.APPLICATION_JSON)
