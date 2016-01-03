@@ -1,8 +1,6 @@
 package com.cricket.cricinfo.api;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
@@ -16,7 +14,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import com.cricket.cricinfo.beans.MatchBean;
-import com.cricket.cricinfo.live.beans.MatchRSSItem;
 import com.cricket.cricinfo.live.beans.RSSFeed;
 import com.cricket.parser.factory.ElementParserFactory;
 
@@ -28,7 +25,7 @@ public class CricinfoMatchResource {
 	
 	@GET
 	@Path("{matchId}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON})
 	public MatchBean getMatchDetails(@PathParam("matchId") String matchId) {
 		MatchBean mactchBean = null;
 
@@ -38,6 +35,7 @@ public class CricinfoMatchResource {
 			
 			mactchBean = ElementParserFactory.getInstance().getBeanInstance(elements, MatchBean.class);
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw new NotFoundException(e.getMessage());
 		}
 		return mactchBean;
@@ -45,19 +43,18 @@ public class CricinfoMatchResource {
 	
 	@GET
 	@Path("live")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<MatchRSSItem> getMatchDetails() {
-		List<MatchRSSItem> items = Collections.emptyList();
+	@Produces({MediaType.APPLICATION_JSON})
+	public RSSFeed getMatchDetails() {
+		RSSFeed feed = null;
 
 		try {
 			Document doc = Jsoup.connect(CRICINFO_LIVE_MATCHES_URL).get();
 			Elements elements = doc.select("channel");
 			
-			RSSFeed feed = ElementParserFactory.getInstance().getBeanInstance(elements, RSSFeed.class);
-			items = feed.getItems();
+			feed = ElementParserFactory.getInstance().getBeanInstance(elements, RSSFeed.class);
 		} catch (IOException e) {
 			throw new NotFoundException(e.getMessage());
 		}
-		return items;
+		return feed;
 	}
 }

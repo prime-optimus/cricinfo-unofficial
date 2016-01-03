@@ -2,8 +2,11 @@ package com.cricket.cricinfo.live.beans;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.cricket.annotations.IteratedSelector;
 
+@XmlRootElement
 public class RSSFeed {
 	
 	@IteratedSelector(selector="item")

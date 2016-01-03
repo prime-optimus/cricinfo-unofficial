@@ -28,7 +28,7 @@ public class TableTextSelectorHandler {
 			selectedElements.add(selectedElement);
 			
 			TextSelectorHandler handler = new TextSelectorHandler();
-			returnValue = handler.determineTextValue(selectedElements, selector.selector() , selector.regex());
+			returnValue = handler.determineTextValue(selectedElements, selector.selector() , selector.regex(), null);
 		}
 		return returnValue;
 	}

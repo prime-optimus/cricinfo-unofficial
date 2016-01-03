@@ -7,7 +7,7 @@ import com.cricket.annotations.SimpleChildSelector;
 
 public class MatchInningsBean {
 	
-	@IteratedSelector(selector="tbody:has(.th-sr) tr:not([class])")
+	@IteratedSelector(selector="tbody:has(.total-wrap) tr:not([class])")
 	private List<BattingCardBean> batting;
 	
 	@IteratedSelector(selector=".fowLink span")
@@ -17,7 +17,7 @@ public class MatchInningsBean {
 	private List<BowlingCardBean> bowling;
 	
 	@IteratedSelector(selector=".to-bat .bold")
-	private List<DidNotBatBean> dnb;
+	private List<PlayerBean> dnb;
 	
 	@SimpleChildSelector(selector="tbody:has(.th-sr)")
 	private InningsSummaryBean summary;
@@ -46,11 +46,11 @@ public class MatchInningsBean {
 		this.bowling = bowling;
 	}
 
-	public List<DidNotBatBean> getDnb() {
+	public List<PlayerBean> getDnb() {
 		return dnb;
 	}
 
-	public void setDnb(List<DidNotBatBean> dnb) {
+	public void setDnb(List<PlayerBean> dnb) {
 		this.dnb = dnb;
 	}
 

@@ -4,11 +4,11 @@ import com.cricket.annotations.TextSelector;
 
 public class TeamOneFeed {
 	
-	@TextSelector(selector = "title", regex="[a-zA-Z ]+(?=\\d+|v)")
+	@TextSelector(selector = "title", regex="[a-zA-Z ]+?(?=\\d+|v)")
 	public String teamName;
 	
 	
-	@TextSelector(selector = "title", regex="\\d+(\\/)*\\d*[\\s\\*]*")
+	@TextSelector(selector = "title", regex="\\d+(\\/)*\\d*[\\s\\*]*(?=\\&|v)")
 	public String score;
 	
 	@TextSelector(selector = "title", regex="(?<=\\&)\\s+\\d+\\/\\d+[\\s\\*]*")

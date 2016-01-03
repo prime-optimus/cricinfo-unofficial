@@ -6,14 +6,14 @@ import com.cricket.annotations.TextSelector;
 
 public class BattingCardBean {
 	
-	@SimpleChildSelector(selector="tbody:has(.th-sr)")
+	@SimpleChildSelector(selector="tbody:has(.total-wrap)")
 	private InningsSummaryBean summary;
 	
-	@TextSelector(selector="td:eq(1)")
-	private String playerName;
+	@SimpleChildSelector(selector="td:eq(1)")
+	private PlayerBean player;
 	
 	@TextSelector(selector="td:eq(2)")
-	private String currentStatus;
+	private String status;
 	
 	@TextSelector(selector="td:eq(3)")
 	private String runs;
@@ -21,32 +21,40 @@ public class BattingCardBean {
 	@TableTextSelector(selector="td" , heading=".th-m", adjustment=1)
 	private String minutes;
 	
-	@TextSelector(selector="td:nth-last-child(4)")
+	@TableTextSelector(selector="td" , heading=".th-b", adjustment=1)
 	private String balls;
 	
-	@TextSelector(selector="td:nth-last-child(3)")
+	@TableTextSelector(selector="td" , heading=".th-4s", adjustment=1)
 	private String fours;
 	
-	@TextSelector(selector="td:nth-last-child(2)")
+	@TableTextSelector(selector="td" , heading=".th-6s", adjustment=1)
 	private String sixes;
 	
-	@TextSelector(selector="td:nth-last-child(1)")
+	@TableTextSelector(selector="td" , heading=".th-sr", adjustment=1)
 	private String strikeRate;
 
-	public String getPlayerName() {
-		return playerName;
+	public InningsSummaryBean getSummary() {
+		return summary;
 	}
 
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
+	public void setSummary(InningsSummaryBean summary) {
+		this.summary = summary;
 	}
 
-	public String getCurrentStatus() {
-		return currentStatus;
+	public PlayerBean getPlayer() {
+		return player;
 	}
 
-	public void setCurrentStatus(String currentStatus) {
-		this.currentStatus = currentStatus;
+	public void setPlayer(PlayerBean player) {
+		this.player = player;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getRuns() {

@@ -1,12 +1,13 @@
 package com.cricket.cricinfo.beans;
 
+import com.cricket.annotations.SimpleChildSelector;
 import com.cricket.annotations.TableTextSelector;
 import com.cricket.annotations.TextSelector;
 
 public class BowlingCardBean {
 
-	@TableTextSelector(selector="td" , heading=".th-innings-heading")
-	private String playerName;
+	@SimpleChildSelector(selector="td:eq(1)")
+	private PlayerBean player;
 	
 	@TableTextSelector(selector="td" , heading=".th-o")
 	private String overs;
@@ -35,12 +36,12 @@ public class BowlingCardBean {
 	@TextSelector(selector="td.td-extra")
 	private String extras;
 
-	public String getPlayerName() {
-		return playerName;
+	public PlayerBean getPlayer() {
+		return player;
 	}
 
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
+	public void setPlayer(PlayerBean player) {
+		this.player = player;
 	}
 
 	public String getOvers() {

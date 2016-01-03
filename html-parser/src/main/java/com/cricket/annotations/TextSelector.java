@@ -10,6 +10,8 @@ import java.lang.annotation.Target;
 public @interface TextSelector{
 	public String selector() default "";
 	
+	public String attribute() default "";
+	
 	public String scope() default "global";
 	
 	public String regex() default "";

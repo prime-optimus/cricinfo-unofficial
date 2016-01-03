@@ -6,10 +6,10 @@ import java.util.regex.Pattern;
 public class MiscTest {
 	
 	public static void main(String args[]){
-		String regex = "(?<=\\& )\\b\\d+(\\/)*(\\d)*$";
+		String regex = "\\d+(\\/)*\\d*[\\s\\*]*(?=\\&|v)";
 				
 		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher("South Africa 136/4 & 214/10 * v England 303/10 & 326/10");
+		Matcher matcher = pattern.matcher("Chilaw Marians Cricket Club v Saracens Sports Club 252/7 *");
 		
 		if(matcher.find()){
 			System.out.println(matcher.group());

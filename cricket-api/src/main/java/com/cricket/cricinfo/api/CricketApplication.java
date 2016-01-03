@@ -8,5 +8,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class CricketApplication extends ResourceConfig {
     public CricketApplication() {
         packages("com.cricket.cricinfo.api");
+        //register(EntityResponseFilter.class);
     }
 }

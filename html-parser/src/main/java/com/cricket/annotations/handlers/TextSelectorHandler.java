@@ -15,15 +15,14 @@ public class TextSelectorHandler {
 	
 	public String processAnnotation(Elements elements, Field field){
 		TextSelector textSelector = field.getAnnotation(TextSelector.class);
-		return determineTextValue(elements, textSelector.selector(), textSelector.regex());
+		return determineTextValue(elements, textSelector.selector(), textSelector.regex(), textSelector.attribute());
 	}
 	
-	public String determineTextValue(Elements elements, String selector, String regex){
-		String value = StringUtils.trim(filterByRegex(determineTextValue(elements, selector), regex));
-		return StringEscapeUtils.escapeHtml4(value);
+	public String determineTextValue(Elements elements, String selector, String regex, String attibute){
+		return StringEscapeUtils.escapeHtml4(StringUtils.trim(filterByRegex(determineTextValue(elements, selector, attibute), regex)));
 	}
 
-	private String determineTextValue(Elements elements, String selector) {
+	private String determineTextValue(Elements elements, String selector, String attibute) {
 		String returnValue = null;
 		
 		Elements tempElements = elements;
@@ -31,25 +30,21 @@ public class TextSelectorHandler {
 			tempElements = elements.select(selector);
 		}
 
-		if(CollectionUtils.isNotEmpty(tempElements) && StringUtils.isNotBlank(tempElements.first().text())){
-			returnValue = tempElements.first().text();
+		if(CollectionUtils.isNotEmpty(tempElements)){
+			returnValue = StringUtils.isNotBlank(attibute) ? tempElements.first().attr(attibute)
+									: tempElements.first().text();
 		}
-		return returnValue;
+		return StringUtils.isNotBlank(returnValue) ? returnValue : null;
 	}
 	
 	private String filterByRegex(String returnValue, String regex) {
 		String regexResult = returnValue;
 		
 		if(StringUtils.isNotBlank(regex) && StringUtils.isNotBlank(returnValue)){
-			
 			Pattern pattern = Pattern.compile(regex);
 			Matcher matcher = pattern.matcher(returnValue);
 			
-			if(matcher.find()){
-				regexResult = matcher.group();
-			} else {
-				regexResult = null;
-			}
+			regexResult = matcher.find() ? matcher.group() : null;
 		}
 		return regexResult;
 	}
