@@ -10,5 +10,5 @@ Cricket Match API provides detailed information about a particular cricket match
 * [Live Match API](http://cricinfo-mukki.rhcloud.com/api/match/live) - Live Match API provides a list of live matches along with some basic details.
 * [Match API](http://cricinfo-mukki.rhcloud.com/api/match/656495) - Match API provides detailed scorecard the requested match.
 
-
-this
+## Future Scope ##
+I'll be working on the Player API to make it available as early as possible. Meanwhile, You can raise a github JIRA ticket if you find any bug in the API. I'll be happy to resolve the issue.
