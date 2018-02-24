@@ -11,6 +11,10 @@
 	<artifactId>cricket-api</artifactId>
 	<packaging>war</packaging>
 	<name>Cricket-API Webapp</name>
+	<properties>
+		<maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>

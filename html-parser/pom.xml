@@ -9,6 +9,10 @@
 	<artifactId>html-parser</artifactId>
 	<name>HTML Parser Engine</name>
 	<description>HTML Parser Engine</description>
+	<properties>
+		<maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
